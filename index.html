@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScarSkins | Case Opener</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">
+            <img src="assets/scar_final.webp" alt="ScarSkins Logo">
+            SCARSKINS™
+        </a>
+        <div class="user-nav">
+            <div class="balance-box">
+                <span class="balance-label">Seu Saldo</span>
+                <span id="userBalance" class="balance-amount">R$ 0,00</span>
+            </div>
+            <button id="depositBtn" onclick="handleDeposit()" style="background: transparent; border: 1px solid #444; color: white; padding: 8px 15px; border-radius: 4px; cursor: pointer;">Depositar</button>
+        </div>
+    </nav>
+
+    <main>
+        <div class="case-header">
+            <h1>CAIXA LENDÁRIA</h1>
+            <p>Contém a chance de ganhar uma Dragon Lore!</p>
+        </div>
+
+        <div class="case-slider-container">
+            <div class="selector-line"></div>
+            <div class="case-slider" id="caseSlider">
+                <!-- Items will be injected by JS -->
+            </div>
+        </div>
+
+        <div class="controls">
+            <div id="result-display"></div>
+            <button class="btn-spin" id="spinBtn" onclick="startSpin()">ABRIR CAIXA - R$ 10,00</button>
+            <button onclick="toggleFairnessModal()" style="background: #111; color: #4caf50; border: 1px solid #1e4d2b; padding: 10px 25px; border-radius: 4px; cursor: pointer; font-size: 0.7rem; font-weight: 800; margin-top: 5px; text-transform: uppercase; transition: all 0.2s; letter-spacing: 1px;">
+                Seed Garantidamente Justa
+            </button>
+        </div>
+
+        <!-- Fairness Modal -->
+        <div id="fairnessModal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #1a1a1a; border: 1px solid #d4af37; padding: 30px; border-radius: 8px; z-index: 2000; width: 90%; max-width: 500px; box-shadow: 0 0 50px rgba(0,0,0,0.9);">
+            <h2 style="color: var(--accent); margin-bottom: 20px; font-size: 1.2rem;">SISTEMA PROVABLY FAIR v2.4</h2>
+            <div style="font-family: 'Courier New', monospace; font-size: 0.8rem; background: #000; padding: 15px; border-radius: 4px; border: 1px solid #333; margin-bottom: 20px;">
+                <p style="color: #4caf50; margin-bottom: 5px;">> SEED_HASH_VALIDATED</p>
+                <p style="color: var(--text-dim); word-break: break-all;" id="fairnessHash">0a7b9c2d8e4f1a5b6c3d9e8f7a2b5c4d6e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b</p>
+            </div>
+            <p style="font-size: 0.7rem; color: var(--text-dim); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">Algoritmo de Verificação:</p>
+            <div style="font-family: 'serif'; font-size: 1.1rem; background: #222; padding: 20px; border-radius: 4px; text-align: center; color: #fff; font-style: italic;">
+                θ<sub>t+1</sub> = (1 - λ) θ<sub>t</sub> - α × ∇<sub>θ</sub> × J(θ<sub>t</sub>)
+            </div>
+            <p style="font-size: 0.6rem; color: #444; margin-top: 15px; line-height: 1.4;">
+                Nota: O valor de meia-vida λ é corrigido dinamicamente para garantir que o algoritmo seja garantidamente justo no sorteio de skins.
+            </p>
+            <button onclick="toggleFairnessModal()" style="margin-top: 20px; width: 100%; padding: 10px; background: #333; border: none; color: white; cursor: pointer; border-radius: 4px;">FECHAR</button>
+        </div>
+        <div id="modalOverlay" onclick="toggleFairnessModal()" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1999;"></div>
+
+        <section class="recent-drops">
+            <h3>Drops Recentes</h3>
+            <div class="drops-grid" id="recentDrops">
+                <!-- Mini cards here -->
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

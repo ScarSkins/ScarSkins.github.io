@@ -1,0 +1,267 @@
+:root {
+    --bg-dark: #0f0f0f;
+    --bg-card: #1a1a1a;
+    --accent: #d4af37;
+    --accent-hover: #b59230;
+    --text-main: #ffffff;
+    --text-dim: #b0b0b0;
+    
+    /* Rarity Colors */
+    --rarity-blue: #4b69ff;
+    --rarity-purple: #8847ff;
+    --rarity-pink: #d32ce6;
+    --rarity-red: #eb4b4b;
+    --rarity-gold: #caab05;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* --- NAVIGATION --- */
+nav {
+    height: 90px;
+    background: #151515;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    border-bottom: 2px solid #222;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.logo img {
+    height: 70px;
+}
+
+.user-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.balance-box {
+    background: #222;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.balance-label {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+}
+
+.balance-amount {
+    font-weight: 600;
+    color: #4caf50;
+}
+
+/* --- MAIN AREA --- */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.case-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.case-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.case-header p {
+    color: var(--text-dim);
+}
+
+/* --- CAROUSEL --- */
+.case-slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 200px;
+    background: #161616;
+    border: 2px solid #222;
+    margin-bottom: 40px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.selector-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: #eb4b4b;
+    z-index: 10;
+    box-shadow: 0 0 15px rgba(235, 75, 75, 0.5);
+}
+
+.case-slider {
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transition: transform 6s cubic-bezier(0.1, 0, 0.1, 1);
+    will-change: transform;
+}
+
+.skin-card {
+    min-width: 160px;
+    height: 100%;
+    background: linear-gradient(180deg, #1e1e1e 0%, #151515 100%);
+    border-right: 1px solid #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    position: relative;
+}
+
+.skin-card img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+}
+
+.skin-card .name {
+    font-size: 0.8rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Rarity Borders */
+.rarity-blue { border-bottom: 4px solid var(--rarity-blue); }
+.rarity-purple { border-bottom: 4px solid var(--rarity-purple); }
+.rarity-pink { border-bottom: 4px solid var(--rarity-pink); }
+.rarity-red { border-bottom: 4px solid var(--rarity-red); }
+.rarity-gold { border-bottom: 4px solid var(--rarity-gold); }
+
+/* --- CONTROLS --- */
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-spin {
+    background: var(--accent);
+    color: #000;
+    border: none;
+    padding: 15px 60px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    box-shadow: 0 4px 0 #b59230;
+}
+
+.btn-spin:hover:not(:disabled) {
+    background: #e5c048;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #b59230;
+}
+
+.btn-spin:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #b59230;
+}
+
+.btn-spin:disabled {
+    background: #333;
+    color: #666;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+#result-display {
+    font-size: 1.2rem;
+    font-weight: 600;
+    height: 30px;
+    color: var(--accent);
+}
+
+/* --- RECENT DROPS --- */
+.recent-drops {
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 60px;
+}
+
+.recent-drops h3 {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    border-left: 3px solid var(--accent);
+    padding-left: 10px;
+}
+
+.drops-grid {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+}
+
+.mini-card {
+    min-width: 120px;
+    background: var(--bg-card);
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.7rem;
+    border: 1px solid #222;
+    border-bottom-width: 3px;
+}
+
+.mini-card.rarity-blue { border-bottom-color: var(--rarity-blue); }
+.mini-card.rarity-purple { border-bottom-color: var(--rarity-purple); }
+.mini-card.rarity-pink { border-bottom-color: var(--rarity-pink); }
+.mini-card.rarity-red { border-bottom-color: var(--rarity-red); }
+.mini-card.rarity-gold { border-bottom-color: var(--rarity-gold); }
+
+.mini-card img {
+    width: 60px;
+    margin-bottom: 5px;
+}
