@@ -4,7 +4,7 @@
     --accent: #d4af37;
     --accent-hover: #b59230;
     --text-main: #ffffff;
-    --text-dim: #b0b0b0;
+    --text-dim: #d4af37;
     
     /* Rarity Colors */
     --rarity-blue: #4b69ff;
@@ -197,7 +197,7 @@ main {
 }
 
 .btn-spin:hover:not(:disabled) {
-    background: #e5c048;
+    background: var(--accent-hover);
     transform: translateY(-2px);
     box-shadow: 0 6px 0 #b59230;
 }
