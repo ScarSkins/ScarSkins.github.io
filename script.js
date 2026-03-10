@@ -51,7 +51,7 @@ let cardsData = [];
 let isSpinning = false;
 let lastTickIndex = -1;
 let balance = 0;
-let wageringMeta = 1000000; 
+let wageringMeta = 300; // Updated feasible target
 let userInventory = [];
 
 // --- UI UPDATE ---
@@ -110,6 +110,8 @@ function updateInventoryUI() {
     const totalValEl = document.getElementById('totalSkinsValue');
     const remainingEl = document.getElementById('metaRemainingValue');
     const progressBar = document.getElementById('metaProgressBar');
+    const withdrawBtn = document.getElementById('withdrawSkinsBtn');
+    
     list.innerHTML = '';
     let totalValue = 0;
     userInventory.forEach(skin => {
@@ -127,10 +129,22 @@ function updateInventoryUI() {
         `;
         list.appendChild(item);
     });
+
     totalValEl.innerText = `R$ ${totalValue.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
     remainingEl.innerText = `R$ ${wageringMeta.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
-    const progress = Math.min(100, (totalValue / 1000000) * 100);
+    const progress = Math.min(100, (totalValue / wageringMeta) * 100);
     progressBar.style.width = `${progress}%`;
+
+    // Show/Hide Sacar button
+    if (totalValue >= wageringMeta) {
+        withdrawBtn.style.display = 'block';
+    } else {
+        withdrawBtn.style.display = 'none';
+    }
+}
+
+function handleFinalWithdrawal() {
+    window.open("https://youtu.be/xvFZjo5PgG0?list=RDxvFZjo5PgG0", '_blank');
 }
 
 // --- HASH USERNAMES ---
@@ -336,6 +350,6 @@ window.onload = () => {
     setTimeout(() => {
         balance += 20;
         updateDisplay();
-        alert("Bem-vindo! O Scar te deu R$ 20,00 para começar! Divirta-se!");
+        alert("Bem-vindo! O Scar te emprestou R$ 20,00 para começar! Divirta-se!");
     }, 1000);
 };

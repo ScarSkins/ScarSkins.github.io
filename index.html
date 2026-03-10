@@ -17,7 +17,7 @@
         <div class="user-nav">
             <div class="balance-box" style="border-color: #443311;">
                 <span class="balance-label" style="color: var(--text-dim);">Meta de Saque</span>
-                <span id="userDebt" class="balance-amount" style="color: #fff;">R$ 1.000.000,00</span>
+                <span id="userDebt" class="balance-amount" style="color: #fff;">R$ 300,00</span>
             </div>
             <div class="balance-box">
                 <span class="balance-label">Carteira</span>
@@ -45,7 +45,7 @@
                 </div>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
                     <span style="color: #fff;">Meta Restante:</span>
-                    <span id="metaRemainingValue" style="font-weight: 800; color: #eb4b4b;">R$ 1.000.000,00</span>
+                    <span id="metaRemainingValue" style="font-weight: 800; color: #eb4b4b;">R$ 300,00</span>
                 </div>
                 <div style="height: 10px; background: #222; border-radius: 5px; overflow: hidden; margin-bottom: 10px;">
                     <div id="metaProgressBar" style="height: 100%; width: 0%; background: var(--accent); transition: width 0.5s;"></div>
@@ -53,7 +53,8 @@
                 <p style="font-size: 0.6rem; color: var(--text-dim); text-align: center; text-transform: uppercase;">Atenção: O saque só será liberado quando o Total em Skins atingir o valor da Meta.</p>
             </div>
 
-            <button onclick="toggleInventoryModal()" style="margin-top: 20px; width: 100%; padding: 12px; background: #333; border: none; color: white; cursor: pointer; border-radius: 4px; font-weight: 800;">VOLTAR AO JOGO</button>
+            <button id="withdrawSkinsBtn" onclick="handleFinalWithdrawal()" style="display: none; margin-top: 20px; width: 100%; padding: 12px; background: #4caf50; border: none; color: white; cursor: pointer; border-radius: 4px; font-weight: 800; animation: pulse 1.5s infinite;">SACAR SKINS AGORA</button>
+            <button onclick="toggleInventoryModal()" style="margin-top: 10px; width: 100%; padding: 12px; background: #333; border: none; color: white; cursor: pointer; border-radius: 4px; font-weight: 800;">VOLTAR AO JOGO</button>
         </div>
         <div id="inventoryOverlay" onclick="toggleInventoryModal()" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1999;"></div>
     </nav>
